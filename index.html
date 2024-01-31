@@ -45,7 +45,12 @@
 <body>
     <h1>Online Car Finder</h1>
     <p>To find cars online.</p>
-</body>
+  <div>
+    <button onclick="sortCarsByYear()">Sort by Year</button>
+    <button onclick="filterCarsByMake('Porsche')">Filter by Porsche</button>
+    <!-- Add more buttons for other sorting/filtering options -->
+  </div>
+  <div id="carList"></div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Load and parse JSON data
@@ -109,7 +114,7 @@
             <p>Year: ${car.Year}</p>
             <p>Body: ${car.Body}</p>
             <p>Engine: ${car.Engine}</p>
-            <!-- Add more properties as needed -->
+            <p>Drive Type: ${car.Display Type}</p>
           `;
           carList.appendChild(carItem);
         });
@@ -137,4 +142,5 @@
       // filterCarsByMake('Porsche');
     });
   </script>
+</body>
 </html>
