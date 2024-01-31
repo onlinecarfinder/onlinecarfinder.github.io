@@ -46,14 +46,41 @@
     <h1>Online Car Finder</h1>
     <p>To find cars online.</p>
   <div>
-    <button onclick="sortCarsByYear()">Sort by Year</button>
-    <button onclick="filterCarsByMake('Porsche')">Filter by Porsche</button>
-    <!-- Add more buttons for other sorting/filtering options -->
+    <select id="sortSelect">
+      <option value="yearAsc">Sort by Year (Asc)</option>
+      <option value="yearDesc">Sort by Year (Desc)</option>
+      <option value="nameAsc">Sort by Name (Asc)</option>
+      <option value="nameDesc">Sort by Name (Desc)</option>
+      <!-- Add more sorting options as needed -->
+    </select>
+    <select id="filterSelect">
+      <option value="Aspiration">Filter by Aspiration</option>
+      <option value="Body">Filter by Body</option>
+      <option value="Cylinder Type Name">Filter by Cylinder Type Name</option>
+      <option value="DisplayName">Filter by Display Name</option>
+      <option value="Drive Type">Filter by Drive Type</option>
+      <option value="Engine">Filter by Engine</option>
+      <option value="Engine - Block Type">Filter by Engine Block Type</option>
+      <option value="Engine - CC">Filter by Engine CC</option>
+      <option value="Engine - CID">Filter by Engine CID</option>
+      <option value="Engine - Cylinders">Filter by Engine Cylinders</option>
+      <option value="Engine - Liter_Display">Filter by Engine Liter Display</option>
+      <option value="Fuel Type Name">Filter by Fuel Type Name</option>
+      <option value="Make">Filter by Make</option>
+      <option value="Model">Filter by Model</option>
+      <option value="NumDoors">Filter by NumDoors</option>
+      <option value="Parts Model">Filter by Parts Model</option>
+      <option value="Submodel">Filter by Submodel</option>
+      <option value="Trim">Filter by Trim</option>
+      <option value="Year">Filter by Year</option>
+      <!-- Add more filtering options as needed -->
+    </select>
+    <button onclick="applyFilters()">Apply Filters</button>
   </div>
   <div id="carList"></div>
-<script>
+
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Load and parse JSON data
       const carsData = [
         {
           "Aspiration": "Naturally Aspirated",
@@ -102,6 +129,8 @@
       ];
 
       const carList = document.getElementById('carList');
+      const sortSelect = document.getElementById('sortSelect');
+      const filterSelect = document.getElementById('filterSelect');
 
       function displayCars(cars) {
         carList.innerHTML = ''; // Clear previous content
@@ -114,32 +143,38 @@
             <p>Year: ${car.Year}</p>
             <p>Body: ${car.Body}</p>
             <p>Engine: ${car.Engine}</p>
-            <p>Drive Type: ${car.Display Type}</p>
+            <!-- Add more properties as needed -->
           `;
           carList.appendChild(carItem);
         });
       }
 
-      // Initial display
-      displayCars(carsData);
-
-      // Sorting function example (by year)
-      function sortCarsByYear() {
-        const sortedCars = [...carsData].sort((a, b) => a.Year - b.Year);
-        displayCars(sortedCars);
-      }
-
-      // Filtering function example (by make)
-      function filterCarsByMake(make) {
-        const filteredCars = carsData.filter(car => car.Make.toLowerCase() === make.toLowerCase());
+      function applyFilters() {
+        const filterValue = filterSelect.value;
+        const filteredCars = carsData.filter(car => car[filterValue]);
         displayCars(filteredCars);
       }
 
-      // Example of using the sorting function
-      // sortCarsByYear();
+      sortSelect.addEventListener('change', function() {
+        const sortValue = sortSelect.value;
+        if (sortValue === 'yearAsc') {
+          const sortedCars = [...carsData].sort((a, b) => a.Year - b.Year);
+          displayCars(sortedCars);
+        } else if (sortValue === 'yearDesc') {
+          const sortedCars = [...carsData].sort((a, b) => b.Year - a.Year);
+          displayCars(sortedCars);
+        } else if (sortValue === 'nameAsc') {
+          const sortedCars = [...carsData].sort((a, b) => a.DisplayName.localeCompare(b.DisplayName));
+          displayCars(sortedCars);
+        } else if (sortValue === 'nameDesc') {
+          const sortedCars = [...carsData].sort((a, b) => b.DisplayName.localeCompare(a.DisplayName));
+          displayCars(sortedCars);
+        }
+        // Add more sorting options as needed
+      });
 
-      // Example of using the filtering function
-      // filterCarsByMake('Porsche');
+      // Initial display
+      displayCars(carsData);
     });
   </script>
 </body>
