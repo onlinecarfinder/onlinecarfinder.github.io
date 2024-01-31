@@ -46,5 +46,95 @@
     <h1>Online Car Finder</h1>
     <p>To find cars online.</p>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Load and parse JSON data
+      const carsData = [
+        {
+          "Aspiration": "Naturally Aspirated",
+          "Body": "Convertible",
+          "Cylinder Type Name": "SOHC",
+          "DisplayName": "Porsche 911 1993 Carrera 2",
+          "Drive Type": "RWD",
+          "Engine": "3.6L 3606CC H6 GAS SOHC Naturally Aspirated",
+          "Engine - Block Type": "H",
+          "Engine - CC": 3606,
+          "Engine - CID": "N/A",
+          "Engine - Cylinders": 6,
+          "Engine - Liter_Display": "3.6L",
+          "Fuel Type Name": "GAS",
+          "KBB_MODEL": "",
+          "Make": "Porsche",
+          "Model": 911,
+          "NumDoors": 2,
+          "Parts Model": 911,
+          "Submodel": "Carrera 2",
+          "Trim": "Carrera 2 Convertible 2-Door",
+          "Year": 1993
+        },
+        {
+          "Aspiration": "Naturally Aspirated",
+          "Body": "Coupe",
+          "Cylinder Type Name": "SOHC",
+          "DisplayName": "Porsche 911 1996 Carrera",
+          "Drive Type": "RWD",
+          "Engine": "3.6L 3606CC H6 GAS SOHC Naturally Aspirated",
+          "Engine - Block Type": "H",
+          "Engine - CC": 3606,
+          "Engine - CID": "N/A",
+          "Engine - Cylinders": 6,
+          "Engine - Liter_Display": "3.6L",
+          "Fuel Type Name": "GAS",
+          "KBB_MODEL": "",
+          "Make": "Porsche",
+          "Model": 911,
+          "NumDoors": 2,
+          "Parts Model": 911,
+          "Submodel": "Carrera",
+          "Trim": "Carrera Coupe 2-Door",
+          "Year": 1996
+        }
+      ];
 
+      const carList = document.getElementById('carList');
+
+      function displayCars(cars) {
+        carList.innerHTML = ''; // Clear previous content
+        cars.forEach(car => {
+          const carItem = document.createElement('div');
+          carItem.innerHTML = `
+            <h3>${car.DisplayName}</h3>
+            <p>Make: ${car.Make}</p>
+            <p>Model: ${car.Model}</p>
+            <p>Year: ${car.Year}</p>
+            <p>Body: ${car.Body}</p>
+            <p>Engine: ${car.Engine}</p>
+            <!-- Add more properties as needed -->
+          `;
+          carList.appendChild(carItem);
+        });
+      }
+
+      // Initial display
+      displayCars(carsData);
+
+      // Sorting function example (by year)
+      function sortCarsByYear() {
+        const sortedCars = [...carsData].sort((a, b) => a.Year - b.Year);
+        displayCars(sortedCars);
+      }
+
+      // Filtering function example (by make)
+      function filterCarsByMake(make) {
+        const filteredCars = carsData.filter(car => car.Make.toLowerCase() === make.toLowerCase());
+        displayCars(filteredCars);
+      }
+
+      // Example of using the sorting function
+      // sortCarsByYear();
+
+      // Example of using the filtering function
+      // filterCarsByMake('Porsche');
+    });
+  </script>
 </html>
