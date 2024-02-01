@@ -1,54 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Car Finder</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, cascadia-code;
-        }
-
-        h1 {
-            color: white;
-            text-align: center;
-        }
-
-        p {
-            font-size: 18px;
-        }
-
-        nav {
-            text-align: center;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Finder</title>
+<style>
+  /* Add your CSS styling here */
+</style>
 </head>
-
 <body>
-    <h1>Online Car Finder</h1>
-    <p>To find cars online.</p>
-    <div>
-    <input type="text" id="searchInput" placeholder="Search">
-    <button onclick="applyFilters()">Apply Filters</button>
-    </div>
+  <div>
+    <input type="text" id="searchInput" placeholder="Search by name...">
+    <button onclick="applySearch()">Apply Search</button>
+  </div>
   <div>
     <select id="sortSelect">
       <option value="yearAsc">Sort by Year (Asc)</option>
@@ -85,7 +49,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const carsData = [
-       [
+[
   {
     "Aspiration": "Naturally Aspirated",
     "Body": "Convertible",
@@ -358,28 +322,20 @@
         displayCars(filteredCars);
       }
 
-      sortSelect.addEventListener('change', function() {
-        const sortValue = sortSelect.value;
-        if (sortValue === 'yearAsc') {
-          const sortedCars = [...carsData].sort((a, b) => a.Year - b.Year);
-          displayCars(sortedCars);
-        } else if (sortValue === 'yearDesc') {
-          const sortedCars = [...carsData].sort((a, b) => b.Year - a.Year);
-          displayCars(sortedCars);
-        } else if (sortValue === 'nameAsc') {
-          const sortedCars = [...carsData].sort((a, b) => a.DisplayName.localeCompare(b.DisplayName));
-          displayCars(sortedCars);
-        } else if (sortValue === 'nameDesc') {
-          const sortedCars = [...carsData].sort((a, b) => b.DisplayName.localeCompare(a.DisplayName));
-          displayCars(sortedCars);
-        }
-        // Add more sorting options as needed
-      });
-
-      searchInput.addEventListener('input', function() {
+      function applySearch() {
         const searchValue = searchInput.value.toLowerCase();
         const filteredCars = carsData.filter(car => car.DisplayName.toLowerCase().includes(searchValue));
         displayCars(filteredCars);
+      }
+
+      sortSelect.addEventListener('change', function() {
+        applyFilters();
+        // Add sorting logic here if needed
+      });
+
+      filterSelect.addEventListener('change', function() {
+        applyFilters();
+        // Add sorting logic here if needed
       });
 
       // Initial display
