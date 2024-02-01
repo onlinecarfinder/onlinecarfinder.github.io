@@ -149,12 +149,6 @@
         });
       }
 
-      function applyFilters() {
-        const filterValue = filterSelect.value;
-        const filteredCars = carsData.filter(car => car[filterValue]);
-        displayCars(filteredCars);
-      }
-
       sortSelect.addEventListener('change', function() {
         const sortValue = sortSelect.value;
         if (sortValue === 'yearAsc') {
@@ -173,6 +167,11 @@
         // Add more sorting options as needed
       });
 
+      searchInput.addEventListener('input', function() {
+        const searchValue = searchInput.value.toLowerCase();
+        const filteredCars = carsData.filter(car => car.DisplayName.toLowerCase().includes(searchValue));
+        displayCars(filteredCars);
+      });
       // Initial display
       displayCars(carsData);
     });
