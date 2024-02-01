@@ -47,6 +47,7 @@
     <p>To find cars online.</p>
     <div>
     <input type="text" id="searchInput" placeholder="Search by name...">
+    <button onclick="applyFilters()">Apply Filters</button>
     </div>
   <div>
     <select id="sortSelect">
@@ -332,6 +333,7 @@
       const carList = document.getElementById('carList');
       const sortSelect = document.getElementById('sortSelect');
       const filterSelect = document.getElementById('filterSelect');
+      const searchInput = document.getElementById('searchInput');
 
       function displayCars(cars) {
         carList.innerHTML = ''; // Clear previous content
@@ -348,6 +350,12 @@
           `;
           carList.appendChild(carItem);
         });
+      }
+
+      function applyFilters() {
+        const filterValue = filterSelect.value;
+        const filteredCars = carsData.filter(car => car[filterValue]);
+        displayCars(filteredCars);
       }
 
       sortSelect.addEventListener('change', function() {
@@ -373,6 +381,7 @@
         const filteredCars = carsData.filter(car => car.DisplayName.toLowerCase().includes(searchValue));
         displayCars(filteredCars);
       });
+
       // Initial display
       displayCars(carsData);
     });
