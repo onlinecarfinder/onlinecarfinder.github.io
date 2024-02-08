@@ -351,18 +351,17 @@
             <p>Year: ${car.Year}</p>
             <p>Body: ${car.Body}</p>
             <p>Engine: ${car.Engine}</p>
+            <p>Drive Type: ${car.Drive Type}</p>
             <!-- Add more properties as needed -->
           `;
           carList.appendChild(carItem);
         });
       }
-
-      function applyFilters() {
+     function applyFilters() {
         const filterValue = filterSelect.value;
-        const filteredCars = carsData.filter(car => car[filterValue]);
+        const filteredCars = carsData.filter(car => car[filterValue] === filterValue);
         displayCars(filteredCars);
       }
-
       function applySearch() {
         const searchValue = searchInput.value.toLowerCase();
         const filteredCars = carsData.filter(car => car.DisplayName.toLowerCase().includes(searchValue));
