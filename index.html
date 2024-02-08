@@ -357,9 +357,9 @@
           carList.appendChild(carItem);
         });
       }
-     function applyFilters() {
-        const filterValue = filterSelect.value;
-        const filteredCars = carsData.filter(car => car[filterValue] === filterValue);
+     function applySearch() {
+        const searchValue = searchInput.value.toLowerCase();
+        const filteredCars = carsData.filter(car => car.DisplayName.toLowerCase().includes(searchValue));
         displayCars(filteredCars);
       }
       function applySearch() {
