@@ -1,5 +1,4 @@
-{
-  "cars":[
+const carsData =[
     {
       "Aspiration": "Naturally Aspirated",
       "Body": "Convertible",
