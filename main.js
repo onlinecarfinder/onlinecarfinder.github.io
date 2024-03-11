@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  <script src="fewdatas.js"></script>
+    const carsData = <script src="fewdatas.js"></script>
     const carList = document.getElementById('carList');
     const sortSelect = document.getElementById('sortSelect');
     const filterSelect = document.getElementById('filterSelect');
