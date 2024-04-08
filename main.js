@@ -6,17 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const filterSelect = document.getElementById('filterSelect');
     const searchInput = document.getElementById('searchInput');
 
-    // Function to fetch data from the JSON file
-    async function fetchData() {
-        try {
-            const response = await fetch('fewdatas.json'); // Fetch the JSON file
-            carsData = await response.json(); // Parse the JSON response
-            displayCars(carsData); // Display cars once data is fetched
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
-
     // Function to display cars
     function displayCars(cars) {
         carList.innerHTML = ''; // Clear previous content
@@ -33,6 +22,17 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             carList.appendChild(carItem);
         });
+    }
+
+    // Function to fetch data from the JSON file
+    async function fetchData() {
+        try {
+            const response = await fetch('fewdatas.json'); // Fetch the JSON file
+            carsData = await response.json(); // Parse the JSON response
+            displayCars(carsData); // Display cars once data is fetched
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
 
     // Function to apply filters
