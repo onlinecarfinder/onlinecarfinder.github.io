@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function() {
     async function fetchData() {
         try {
             const response = await fetch('fewdatas.json'); // Fetch the JSON file
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
             carsData = await response.json(); // Parse the JSON response
             displayCars(carsData); // Display cars once data is fetched
         } catch (error) {
