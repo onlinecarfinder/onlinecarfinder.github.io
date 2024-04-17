@@ -7,52 +7,57 @@
 <link rel="stylesheet" type="text/css" href="style.css" /> 
 </head>
 <body>
- <h1>Online Car Finder</h1>
-    <nav>
-        <ul>
-            <li><a href="./info.html">Info</a></li>
-            <li><a href="./credit.html">Credit</a></li>
-        </ul>
-    </nav>
+<h1>Online Car Finder</h1>
 
-    <p>To find cars online.</p>
-  <div>
-    <input type="text" id="searchInput" placeholder="Search by name...">
+<nav>
+    <ul>
+        <li><a href="./info.html">Info</a></li>
+        <li><a href="./credit.html">Credit</a></li>
+    </ul>
+</nav>
+
+<p>To find cars online.</p>
+
+<div>
+    <input type="text" id="searchInput" placeholder="Search">
     <button onclick="applySearch()">Apply Search</button>
-  </div>
-  <div>
-    <select id="sortSelect">
-      <option value="yearAsc">Sort by Year (Asc)</option>
-      <option value="yearDesc">Sort by Year (Desc)</option>
-      <option value="nameAsc">Sort by Name (Asc)</option>
-      <option value="nameDesc">Sort by Name (Desc)</option>
-      <!-- Add more sorting options as needed -->
-    </select>
-    <select id="filterSelect">
-      <option value="Aspiration">Filter by Aspiration</option>
-      <option value="Body">Filter by Body</option>
-      <option value="Cylinder Type Name">Filter by Cylinder Type Name</option>
-      <option value="DisplayName">Filter by Display Name</option>
-      <option value="Drive Type">Filter by Drive Type</option>
-      <option value="Engine">Filter by Engine</option>
-      <option value="Engine - Block Type">Filter by Engine Block Type</option>
-      <option value="Engine - CC">Filter by Engine CC</option>
-      <option value="Engine - CID">Filter by Engine CID</option>
-      <option value="Engine - Cylinders">Filter by Engine Cylinders</option>
-      <option value="Engine - Liter_Display">Filter by Engine Liter Display</option>
-      <option value="Fuel Type Name">Filter by Fuel Type Name</option>
-      <option value="Make">Filter by Make</option>
-      <option value="Model">Filter by Model</option>
-      <option value="NumDoors">Filter by NumDoors</option>
-      <option value="Parts Model">Filter by Parts Model</option>
-      <option value="Submodel">Filter by Submodel</option>
-      <option value="Trim">Filter by Trim</option>
-      <option value="Year">Filter by Year</option>
-      <!-- Add more filtering options as needed -->
-    </select>
-  </div>
-  <div id="carList"></div>
+</div>
 
-  <script src="main.js"></script>
+<div>
+    <select id="sortSelect">
+        <option value="yearAsc">Sort by Year (Asc)</option>
+        <option value="yearDesc">Sort by Year (Desc)</option>
+        <option value="nameAsc">Sort by Name (Asc)</option>
+        <option value="nameDesc">Sort by Name (Desc)</option>
+        <!-- Add more sorting options as needed -->
+    </select>
+
+    <select id="filterSelect">
+        <option value="Aspiration">Filter by Aspiration</option>
+        <option value="Body">Filter by Body</option>
+        <option value="Cylinder Type Name">Filter by Cylinder Type Name</option>
+        <option value="DisplayName">Filter by Display Name</option>
+        <option value="Drive Type">Filter by Drive Type</option>
+        <option value="Engine">Filter by Engine</option>
+        <option value="Engine - Block Type">Filter by Engine Block Type</option>
+        <option value="Engine - CC">Filter by Engine CC</option>
+        <option value="Engine - CID">Filter by Engine CID</option>
+        <option value="Engine - Cylinders">Filter by Engine Cylinders</option>
+        <option value="Engine - Liter_Display">Filter by Engine Liter Display</option>
+        <option value="Fuel Type Name">Filter by Fuel Type Name</option>
+        <option value="Make">Filter by Make</option>
+        <option value="Model">Filter by Model</option>
+        <option value="NumDoors">Filter by NumDoors</option>
+        <option value="Parts Model">Filter by Parts Model</option>
+        <option value="Submodel">Filter by Submodel</option>
+        <option value="Trim">Filter by Trim</option>
+        <option value="Year">Filter by Year</option>
+        <!-- Add more filtering options as needed -->
+    </select>
+</div>
+
+<div id="carList"></div>
+
+<script src="main.js"></script>
 </body>
 </html>
