@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to fetch data from the JSON file
     async function fetchData() {
         try {
-            const response = await fetch('http://api.aweirdwhale.xyz/apis/onlinecars.json'); // Fetch the JSON file
+            const response = await fetch('fewfewdatas.json'); // Fetch the JSON file
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
